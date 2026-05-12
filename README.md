@@ -10,7 +10,6 @@ Provides comprehensive language support for the **Maude** rewriting logic specif
 ## Github Repository 
 [github.com/lamouriml/Maude-Rewriting-Logic-Extension](https://github.com/lamouriml/Maude-Rewriting-Logic-Extension/)
 
-
 ## Features
 
 ### Syntax Highlighting
@@ -24,7 +23,7 @@ Full TextMate grammar covering:
 - Full Maude keywords (`class`, `msg`, `subclass`)
 - Parameterization (`fth`, `view`, `from`, `to`)
 - Meta-level functions (`metaReduce`, `metaRewrite`, etc.)
-- Comments (`---` line comments, `{- -}` block comments)
+- Comments (`---` / `***` line comments, `---(` / `***(` block comments, `{- -}` block comments)
 - Quoted strings and numeric literals
 
 ### Autocomplete
@@ -39,6 +38,21 @@ Hover over any keyword to see formatted Markdown documentation:
 - Syntax examples
 - Usage guidelines
 - Related keywords
+
+### Symbol Navigation
+Navigate your Maude files using VS Code's Outline view, Breadcrumbs, and symbol search:
+- **Modules** (`fmod`, `mod`, `omod`) and theories (`fth`)
+- **Operators** (`op`, `ops`)
+- **Equations** (`eq`, `ceq`) and **rewrite rules** (`rl`, `crl`)
+- **Sort** declarations (`sort`, `sorts`)
+- **Classes** and **messages** (Full Maude OO)
+- **Views** and **variables**
+- Symbols are organized hierarchically under their containing module
+
+### Go To Definition
+Jump directly to the definition of any symbol with Ctrl+Click:
+- Operators, sorts, variables, modules, classes, messages, views
+- File-local indexing via lightweight regex extraction
 
 ### Snippets
 Pre-built templates for common constructs:
@@ -94,24 +108,15 @@ If you have downloaded a `.vsix` file from [GitHub Releases](https://github.com/
    - Select **Install from VSIX...**
    - Choose the downloaded `.vsix` file
 
-
 3. **Verify Installation**
    - Create or open a `.maude` file
    - You should see syntax highlighting, autocomplete, and hover documentation working
 
-## Extension Settings
-
-This extension contributes the following settings:
-
-* `maude.language`: Maude language configuration
-
-
 ## Future Plans
 
-- Error diagnostics
-- Go to definition
-- Symbol navigation
+- Cross-file symbol resolution
 - Language Server Protocol (LSP) implementation
+- Multi-workspace symbol indexing
 
 ---
 

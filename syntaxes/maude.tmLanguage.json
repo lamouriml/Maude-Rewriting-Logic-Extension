@@ -26,8 +26,23 @@
     "comments": {
       "patterns": [
         {
-          "name": "comment.line.double-dash.maude",
+          "name": "comment.block.maude",
+          "begin": "\\*\\*\\*\\(",
+          "end": "\\)"
+        },
+        {
+          "name": "comment.block.maude",
+          "begin": "---\\(",
+          "end": "\\)"
+        },
+        {
+          "name": "comment.line.maude",
           "begin": "---",
+          "end": "$"
+        },
+        {
+          "name": "comment.line.maude",
+          "begin": "\\*\\*\\*",
           "end": "$"
         },
         {
