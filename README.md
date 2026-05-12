@@ -50,6 +50,20 @@ Pre-built templates for common constructs:
 - `mb`, `cmb` — membership axioms
 - `fth`, `view` — parameterization
 
+## Screenshots
+
+### Hover Documentation
+![Hover Documentation - Editor and Hover Description](images/editor%20and%20hover%20description.png)
+*Displays formatted Markdown documentation when hovering over Maude keywords, providing syntax examples and usage guidelines.*
+
+### Autocomplete Suggestions
+![Autocomplete Suggestions - Snippet and Auto Complete](images/snippet%20and%20auto%20complete.png)
+*Intelligent autocomplete suggestions as you type, offering keywords, commands, and operator attributes with descriptions.*
+
+### Extension in Marketplace
+![Extension in Marketplace - Readme](images/extension%20in%20marketplace%20readme.png)
+*The extension is available on the Visual Studio Code Marketplace for easy installation and discovery.*
+
 ## Requirements
 
 - Visual Studio Code 1.85.0 or higher
