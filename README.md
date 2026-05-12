@@ -7,6 +7,10 @@ Provides comprehensive language support for the **Maude** rewriting logic specif
 
 **Author:** Mohamed Lamine Lamouri — [lamourimhmd@gmail.com](mailto:lamourimhmd@gmail.com) — [github.com/lamouriml](https://github.com/lamouriml)
 
+## Github Repository 
+[github.com/lamouriml/Maude-Rewriting-Logic-Extension](https://github.com/lamouriml/Maude-Rewriting-Logic-Extension/)
+
+
 ## Features
 
 ### Syntax Highlighting
