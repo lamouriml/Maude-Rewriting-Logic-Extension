@@ -1,0 +1,88 @@
+{
+  "name": "Maude-Rewriting-Logic-Extension",
+  "displayName": "Maude System Rewriting Logic Extension",
+  "description": "Maude language support — syntax highlighting, autocomplete, hover documentation, and snippets",
+  "version": "1.1.0",
+  "publisher": "lamouriml",
+  "author": {
+    "name": "Mohamed Lamine Lamouri",
+    "email": "lamourimhmd@gmail.com",
+    "url": "https://github.com/lamouriml"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lamouriml/Maude-Rewriting-Logic-Extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lamouriml/Maude-Rewriting-Logic-Extension/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "maude",
+    "rewriting logic",
+    "formal methods",
+    "specification",
+    "verification",
+    "language"
+  ],
+  "icon": "icon.ico",
+  "activationEvents": [
+    "onLanguage:maude"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "maude",
+        "aliases": [
+          "Maude",
+          "maude"
+        ],
+        "extensions": [
+          ".maude",
+          ".ma",
+          ".spc"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "maude",
+        "scopeName": "source.maude",
+        "path": "./syntaxes/maude.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "maude",
+        "path": "./snippets/maude.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "maude.showHello",
+        "title": "Maude: Hello World"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./tsconfig.json",
+    "watch": "tsc -watch -p ./tsconfig.json",
+    "lint": "tsc --noEmit",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}

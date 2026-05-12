@@ -1,0 +1,34 @@
+{
+  "comments": {
+    "lineComment": "---",
+    "blockComment": ["{-", "-}"]
+  },
+  "brackets": [
+    ["(", ")"],
+    ["[", "]"],
+    ["{-", "-}"]
+  ],
+  "autoClosingPairs": [
+    { "open": "(", "close": ")" },
+    { "open": "[", "close": "]" },
+    { "open": "{-", "close": "-}" },
+    { "open": "'", "close": "'", "notIn": ["string", "comment"] }
+  ],
+  "surroundingPairs": [
+    { "open": "(", "close": ")" },
+    { "open": "[", "close": "]" },
+    { "open": "'", "close": "'" }
+  ],
+  "autoCloseBefore": ";:.,=}])` \n\t",
+  "folding": {
+    "markers": {
+      "start": "\\bfmod\\b|\\bmod\\b|\\bomod\\b|\\bfth\\b|\\bview\\b",
+      "end": "\\bendfm\\b|\\bendm\\b|\\bendom\\b|\\bendfth\\b|\\bendv\\b"
+    }
+  },
+  "indentationRules": {
+    "increaseIndentPattern": "^.*(?:\\bis\\b|:|=|=>).*$",
+    "decreaseIndentPattern": "^\\s*(?:endfm|endm|endom|endfth|endv)\\b"
+  },
+  "wordPattern": "(-?\\d*\\.\\d+\\w*)|([^\\s\\.\\[\\]()'\"`,;:]+)"
+}

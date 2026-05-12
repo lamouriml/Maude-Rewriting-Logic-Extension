@@ -1,0 +1,208 @@
+{
+  "Functional Module (fmod)": {
+    "prefix": "fmod",
+    "body": [
+      "fmod ${1:MODULE-NAME} is",
+      "\t${2}",
+      "endfm"
+    ],
+    "description": "Declare a functional module (equational-style)"
+  },
+  "System Module (mod)": {
+    "prefix": "mod",
+    "body": [
+      "mod ${1:MODULE-NAME} is",
+      "\t${2}",
+      "endm"
+    ],
+    "description": "Declare a system module (with rewrite rules)"
+  },
+  "Object-Oriented Module (omod)": {
+    "prefix": "omod",
+    "body": [
+      "(omod ${1:MODULE-NAME} is",
+      "\t${2}",
+      "endom)"
+    ],
+    "description": "Declare an object-oriented module (Full Maude)"
+  },
+  "Unconditional Equation (eq)": {
+    "prefix": "eq",
+    "body": [
+      "eq ${1:term} = ${2:term} ."
+    ],
+    "description": "Declare an unconditional equation"
+  },
+  "Conditional Equation (ceq)": {
+    "prefix": "ceq",
+    "body": [
+      "ceq ${1:term} = ${2:term} if ${3:condition} ."
+    ],
+    "description": "Declare a conditional equation"
+  },
+  "Rewrite Rule (rl)": {
+    "prefix": "rl",
+    "body": [
+      "rl [${1:label}] : ${2:lhs} => ${3:rhs} ."
+    ],
+    "description": "Declare an unconditional rewrite rule"
+  },
+  "Conditional Rewrite Rule (crl)": {
+    "prefix": "crl",
+    "body": [
+      "crl [${1:label}] : ${2:lhs} => ${3:rhs} if ${4:condition} ."
+    ],
+    "description": "Declare a conditional rewrite rule"
+  },
+  "Operation (op)": {
+    "prefix": "op",
+    "body": [
+      "op ${1:name} : ${2:inputs} -> ${3:output} ${4:[attributes]} ."
+    ],
+    "description": "Declare an operation"
+  },
+  "Multiple Operations (ops)": {
+    "prefix": "ops",
+    "body": [
+      "ops ${1:name1} ${2:name2} : ${3:inputs} -> ${4:output} ${5:[attributes]} ."
+    ],
+    "description": "Declare multiple operations at once"
+  },
+  "Variable (var)": {
+    "prefix": "var",
+    "body": [
+      "var ${1:NAME} : ${2:Sort} ."
+    ],
+    "description": "Declare a variable"
+  },
+  "Multiple Variables (vars)": {
+    "prefix": "vars",
+    "body": [
+      "vars ${1:NAME1} ${2:NAME2} : ${3:Sort} ."
+    ],
+    "description": "Declare multiple variables of the same sort"
+  },
+  "Sort (sort)": {
+    "prefix": "sort",
+    "body": [
+      "sort ${1:SORT-NAME} ."
+    ],
+    "description": "Declare a sort (data type)"
+  },
+  "Subsort (subsort)": {
+    "prefix": "subsort",
+    "body": [
+      "subsort ${1:Child} < ${2:Parent} ."
+    ],
+    "description": "Declare a subsort relation"
+  },
+  "Protecting Import (protecting)": {
+    "prefix": "protecting",
+    "body": [
+      "protecting ${1:MODULE-NAME} ."
+    ],
+    "description": "Import a module strictly (no junk or confusion)"
+  },
+  "Including Import (including)": {
+    "prefix": "including",
+    "body": [
+      "including ${1:MODULE-NAME} ."
+    ],
+    "description": "Import a module generally (allows junk and confusion)"
+  },
+  "Extending Import (extending)": {
+    "prefix": "extending",
+    "body": [
+      "extending ${1:MODULE-NAME} ."
+    ],
+    "description": "Import a module allowing junk but no confusion"
+  },
+  "Class (class)": {
+    "prefix": "class",
+    "body": [
+      "class ${1:CLASS-NAME} | ${2:attr} : ${3:Sort} ."
+    ],
+    "description": "Declare a class (Full Maude)"
+  },
+  "Message (msg)": {
+    "prefix": "msg",
+    "body": [
+      "msg ${1:MSG-NAME} : ${2:inputs} -> Msg ."
+    ],
+    "description": "Declare a message (Full Maude)"
+  },
+  "Search (search)": {
+    "prefix": "search",
+    "body": [
+      "search [${1:bound}] ${2:start} =>${3:+} ${4:pattern} ."
+    ],
+    "description": "Perform a breadth-first search through state space"
+  },
+  "Rewrite Command (rewrite)": {
+    "prefix": "rewrite",
+    "body": [
+      "rewrite [${1:bound}] ${2:expression} ."
+    ],
+    "description": "Apply rewrite rules to transition states"
+  },
+  "Reduce Command (reduce)": {
+    "prefix": "reduce",
+    "body": [
+      "reduce ${1:expression} ."
+    ],
+    "description": "Reduce a term to its canonical form"
+  },
+  "Reduce in Module (red in)": {
+    "prefix": "red",
+    "body": [
+      "red in ${1:MODULE-NAME} : ${2:expression} ."
+    ],
+    "description": "Reduce a term within a specific module"
+  },
+  "Membership Axiom (mb)": {
+    "prefix": "mb",
+    "body": [
+      "mb ${1:term} : ${2:Sort} ."
+    ],
+    "description": "Declare an unconditional membership axiom"
+  },
+  "Conditional Membership (cmb)": {
+    "prefix": "cmb",
+    "body": [
+      "cmb ${1:term} : ${2:Sort} if ${3:condition} ."
+    ],
+    "description": "Declare a conditional membership axiom"
+  },
+  "Functional Theory (fth)": {
+    "prefix": "fth",
+    "body": [
+      "fth ${1:THEORY-NAME} is",
+      "\t${2}",
+      "endfth"
+    ],
+    "description": "Declare a functional theory"
+  },
+  "View (view)": {
+    "prefix": "view",
+    "body": [
+      "view ${1:VIEW-NAME} from ${2:THEORY} to ${3:MODULE} is",
+      "\t${4}",
+      "endv"
+    ],
+    "description": "Declare a view mapping theory to module"
+  },
+  "Fair Rewrite (frewrite)": {
+    "prefix": "frewrite",
+    "body": [
+      "frewrite [${1:bound}] ${2:expression} ."
+    ],
+    "description": "Apply fair rewrite strategy (avoids stuck loops)"
+  },
+  "Load Module (load)": {
+    "prefix": "load",
+    "body": [
+      "load ${1:file-name.maude}"
+    ],
+    "description": "Load a file into the Maude environment"
+  }
+}

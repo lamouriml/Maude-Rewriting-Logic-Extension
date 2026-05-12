@@ -1,0 +1,283 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Maude",
+  "scopeName": "source.maude",
+  "fileTypes": ["maude", "ma", "spc"],
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#numbers" },
+    { "include": "#moduleDeclarations" },
+    { "include": "#importation" },
+    { "include": "#dataTypes" },
+    { "include": "#variables" },
+    { "include": "#operations" },
+    { "include": "#logicKeywords" },
+    { "include": "#attributes" },
+    { "include": "#ooKeywords" },
+    { "include": "#parameterization" },
+    { "include": "#environmentCommands" },
+    { "include": "#metaKeywords" },
+    { "include": "#builtins" },
+    { "include": "#separators" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.maude",
+          "begin": "---",
+          "end": "$"
+        },
+        {
+          "name": "comment.block.maude",
+          "begin": "\\{-",
+          "end": "-\\}"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted.single.maude",
+      "begin": "'",
+      "end": "(?:\\s|\\.|\\])",
+      "patterns": [
+        {
+          "name": "constant.character.escape.maude",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.maude",
+      "match": "\\b[0-9]+\\b"
+    },
+    "moduleDeclarations": {
+      "patterns": [
+        {
+          "name": "keyword.module.fmod.maude",
+          "match": "\\bfmod\\b",
+          "comment": "Functional Module declaration"
+        },
+        {
+          "name": "keyword.module.mod.maude",
+          "match": "\\bmod\\b",
+          "comment": "System Module declaration"
+        },
+        {
+          "name": "keyword.module.omod.maude",
+          "match": "\\bomod\\b",
+          "comment": "Object-Oriented Module (Full Maude)"
+        },
+        {
+          "name": "keyword.module.is.maude",
+          "match": "\\bis\\b",
+          "comment": "Module body separator"
+        },
+        {
+          "name": "keyword.module.endfm.maude",
+          "match": "\\bendfm\\b",
+          "comment": "End Functional Module"
+        },
+        {
+          "name": "keyword.module.endm.maude",
+          "match": "\\bendm\\b",
+          "comment": "End System Module"
+        },
+        {
+          "name": "keyword.module.endom.maude",
+          "match": "\\bendom\\b",
+          "comment": "End Object-Oriented Module"
+        }
+      ]
+    },
+    "importation": {
+      "patterns": [
+        {
+          "name": "keyword.import.protecting.maude",
+          "match": "\\b(?:protecting|pr)\\b"
+        },
+        {
+          "name": "keyword.import.extending.maude",
+          "match": "\\b(?:extending|ex)\\b"
+        },
+        {
+          "name": "keyword.import.including.maude",
+          "match": "\\b(?:including|inc)\\b"
+        }
+      ]
+    },
+    "dataTypes": {
+      "patterns": [
+        {
+          "name": "keyword.type.sort.maude",
+          "match": "\\bsorts?\\b"
+        },
+        {
+          "name": "keyword.type.subsort.maude",
+          "match": "\\bsubsorts?\\b"
+        },
+        {
+          "name": "keyword.type.var.maude",
+          "match": "\\bvars?\\b"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.other.maude",
+          "match": "\\b[A-Z][A-Za-z0-9']*\\b"
+        }
+      ]
+    },
+    "operations": {
+      "patterns": [
+        {
+          "name": "keyword.operator.op.maude",
+          "match": "\\bops?\\b"
+        }
+      ]
+    },
+    "logicKeywords": {
+      "patterns": [
+        {
+          "name": "keyword.logic.equation.maude",
+          "match": "\\b(?:eq|ceq)\\b"
+        },
+        {
+          "name": "keyword.logic.rule.maude",
+          "match": "\\b(?:rl|crl)\\b"
+        },
+        {
+          "name": "keyword.logic.if.maude",
+          "match": "\\bif\\b"
+        },
+        {
+          "name": "keyword.logic.membership.maude",
+          "match": "\\b(?:mb|cmb)\\b"
+        }
+      ]
+    },
+    "attributes": {
+      "patterns": [
+        {
+          "name": "keyword.attribute.maude",
+          "match": "\\[(?:ctor|assoc|comm|idem|iter|memo|owise|otherwise)\\]"
+        },
+        {
+          "name": "keyword.attribute.maude",
+          "match": "\\b(?:left id|right id|id|prec|gather|metadata)\\b"
+        }
+      ]
+    },
+    "ooKeywords": {
+      "patterns": [
+        {
+          "name": "keyword.oo.class.maude",
+          "match": "\\bclass\\b"
+        },
+        {
+          "name": "keyword.oo.subclass.maude",
+          "match": "\\bsubclass\\b"
+        },
+        {
+          "name": "keyword.oo.msg.maude",
+          "match": "\\bmsgs?\\b"
+        }
+      ]
+    },
+    "parameterization": {
+      "patterns": [
+        {
+          "name": "keyword.parameterization.fth.maude",
+          "match": "\\bfth\\b"
+        },
+        {
+          "name": "keyword.parameterization.endfth.maude",
+          "match": "\\bendfth\\b"
+        },
+        {
+          "name": "keyword.parameterization.view.maude",
+          "match": "\\bview\\b"
+        },
+        {
+          "name": "keyword.parameterization.endv.maude",
+          "match": "\\bendv\\b"
+        },
+        {
+          "name": "keyword.parameterization.from.maude",
+          "match": "\\bfrom\\b"
+        },
+        {
+          "name": "keyword.parameterization.to.maude",
+          "match": "\\bto\\b"
+        }
+      ]
+    },
+    "environmentCommands": {
+      "patterns": [
+        {
+          "name": "keyword.command.maude",
+          "match": "\\b(?:load|select|reduce|red|rewrite|rew|frewrite|frew|continue|search|loop)\\b"
+        },
+        {
+          "name": "keyword.command.trace.maude",
+          "match": "\\bset trace (?:on|off)\\b"
+        },
+        {
+          "name": "keyword.command.trace.maude",
+          "match": "\\btrace select\\b"
+        },
+        {
+          "name": "keyword.command.show.maude",
+          "match": "\\bshow path\\b"
+        }
+      ]
+    },
+    "metaKeywords": {
+      "patterns": [
+        {
+          "name": "keyword.meta.maude",
+          "match": "\\b(?:metaReduce|metaRewrite|metaApply|metaXapply|up|down)\\b"
+        }
+      ]
+    },
+    "builtins": {
+      "patterns": [
+        {
+          "name": "support.type.builtin.maude",
+          "match": "\\b(?:Msg|Oid|Configuration|Attribute|AttributeSet|MsgConfig|Object|NeMsg|Module|Term|Sort|Kind|Variable|Substitution|Condition|Equation|RewriteRule|Strategy|Nat|Bool|Float|String|Int|Zero|Succ|NzNat|Rat)\\b"
+        }
+      ]
+    },
+    "separators": {
+      "patterns": [
+        {
+          "name": "punctuation.separator.maude",
+          "match": "\\."
+        },
+        {
+          "name": "punctuation.separator.maude",
+          "match": ","
+        },
+        {
+          "name": "punctuation.separator.maude",
+          "match": ":"
+        },
+        {
+          "name": "punctuation.bracket.maude",
+          "match": "[\\[\\](){}]"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.symbol.maude",
+          "match": "=>|->|::|=|:|\\+\\+|\\|"
+        }
+      ]
+    }
+  }
+}
