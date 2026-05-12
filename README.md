@@ -112,12 +112,5 @@ If you have downloaded a `.vsix` file from [GitHub Releases](https://github.com/
    - Create or open a `.maude` file
    - You should see syntax highlighting, autocomplete, and hover documentation working
 
-## Future Plans
-
-- Cross-file symbol resolution
-- Language Server Protocol (LSP) implementation
-- Multi-workspace symbol indexing
-
----
 
 **Enjoy writing Maude specifications!**

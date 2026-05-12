@@ -35,7 +35,12 @@ npm run watch
 1. Open the `Maude-Rewriting-Logic-Extension` folder in VS Code
 2. Press `F5` (or Run → Start Debugging)
 3. A new VS Code window opens with the extension loaded
-4. Open or create a `.maude` file to test syntax highlighting, autocomplete, and hover docs
+4. Open or create a `.maude` file to test features:
+   - **Syntax highlighting** — verify keyword colors
+   - **Autocomplete** — type `op` + space, see suggestions
+   - **Hover docs** — hover over `mod`, `op`, `eq`, etc.
+   - **Symbol navigation** — open Outline view (Ctrl+Shift+O), see modules, ops, sorts, etc.
+   - **Go to definition** — Ctrl+Click on an operator/sort to jump to its declaration
 
 ## Package
 
@@ -56,15 +61,23 @@ Produces `Maude-Rewriting-Logic-Extension-<version>.vsix` in the project root.
 
 ```
 src/
-  extension.ts              # Activation entry point
-  maudeData.ts              # Centralized language data
-  completionProvider.ts     # Autocomplete provider
-  hoverProvider.ts          # Hover documentation provider
+  extension.ts                # Activation entry point
+  maudeData.ts                # Centralized language data
+  completionProvider.ts       # Autocomplete provider
+  hoverProvider.ts            # Hover documentation provider
+  symbols/
+    symbolKinds.ts            # Symbol type definitions
+    symbolExtractor.ts        # Extract Maude symbols from text
+    symbolProvider.ts         # DocumentSymbolProvider (Outline + Breadcrumbs)
+  definition/
+    regexExtractors.ts        # Extract definition locations
+    symbolIndex.ts            # Build symbol name → location index
+    definitionProvider.ts     # DefinitionProvider (Ctrl+Click)
 syntaxes/
-  maude.tmLanguage.json     # TextMate grammar for highlighting
+  maude.tmLanguage.json       # TextMate grammar for highlighting
 snippets/
-  maude.json                # Code snippets
-language-configuration.json # Comments, brackets, indentation
+  maude.json                  # Code snippets
+language-configuration.json   # Comments, brackets, indentation
 ```
 
 ## How to Add / Modify Features
@@ -144,7 +157,8 @@ Common scope names:
 - `support.type` — for built-in types
 - `constant.numeric` — for numbers
 - `string.quoted` — for strings
-- `comment.line` — for comments
+- `comment.line` — for line comments (`---`, `***`)
+- `comment.block` — for block comments (`{- -}`, `---( )`, `***( )`)
 - `variable.other` — for variables
 
 After editing, reload the VS Code window (no compile needed for grammar files).
@@ -159,6 +173,42 @@ Edit `language-configuration.json` to change:
 - **folding** — markers for code folding
 
 After editing, reload the VS Code window.
+
+### Modify Symbol Extraction (Outline / Breadcrumbs)
+
+Files: `src/symbols/symbolExtractor.ts` and `src/symbols/symbolProvider.ts`
+
+1. Add or modify a regex pattern in `symbolExtractor.ts` to recognize the Maude construct
+2. Map it to the appropriate `MaudeSymbolKind` and `SymbolKind` in `symbolProvider.ts`
+3. Recompile: `npm run compile`
+
+Example — adding extraction for a new construct:
+
+```typescript
+// In symbolExtractor.ts
+const myPattern = /^\s*myKeyword\s+([A-Za-z0-9_-]+)\b/;
+
+// Inside the loop:
+match = text.match(myPattern);
+if (match) {
+  symbols.push({
+    name: match[1], kind: 'sort',
+    line: lineNum, character: text.indexOf(match[1]),
+    endLine: lineNum, endCharacter: text.length,
+    detail: `myKeyword ${match[1]}`, containerName,
+  });
+  continue;
+}
+```
+
+### Modify Go To Definition
+
+Files: `src/definition/regexExtractors.ts`, `src/definition/symbolIndex.ts`, `src/definition/definitionProvider.ts`
+
+1. Add a regex pattern in `regexExtractors.ts` to capture definitions (operator names, sort names, etc.)
+2. The `symbolIndex` automatically builds a map from the extracted entries
+3. `definitionProvider.ts` looks up the word under cursor in the index
+4. Recompile: `npm run compile`
 
 ### Add a New Command to the Extension
 
@@ -189,5 +239,7 @@ context.subscriptions.push(
 | Snippet | `snippets/maude.json` | No |
 | Syntax highlighting color | `syntaxes/maude.tmLanguage.json` | No |
 | Comments / brackets / indentation | `language-configuration.json` | No |
+| Symbol Outline / Breadcrumbs | `src/symbols/symbolExtractor.ts` + `symbolProvider.ts` | Yes |
+| Go To Definition target | `src/definition/regexExtractors.ts` | Yes |
 | New VS Code command | `src/extension.ts` + `package.json` | Yes |
 | Extension metadata (name, version, etc.) | `package.json` | No |
