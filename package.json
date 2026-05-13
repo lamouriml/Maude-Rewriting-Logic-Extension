@@ -2,7 +2,7 @@
   "name": "Maude-Rewriting-Logic-Extension",
   "displayName": "Maude System Rewriting Logic Extension",
   "description": "Maude language support — syntax highlighting, autocomplete, hover documentation, and snippets",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "lamouriml",
   "author": {
     "name": "Mohamed Lamine Lamouri",
@@ -18,7 +18,7 @@
     "url": "https://github.com/lamouriml/Maude-Rewriting-Logic-Extension/issues"
   },
   "engines": {
-    "vscode": "^1.50.0"
+    "vscode": "^1.70.0"
   },
   "categories": [
     "Programming Languages",
@@ -34,7 +34,8 @@
   ],
   "icon": "icon.ico",
   "activationEvents": [
-    "onLanguage:maude"
+    "onLanguage:maude",
+    "onCommand:maude.openVisualization"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -70,8 +71,31 @@
       {
         "command": "maude.showHello",
         "title": "Maude: Hello World"
+      },
+      {
+        "command": "maude.openVisualization",
+        "title": "Maude-RL: Open Session"
+      },
+      {
+        "command": "maude.closeVisualization",
+        "title": "Maude-RL: Close Session"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Maude",
+      "properties": {
+        "maude.executablePath": {
+          "type": "string",
+          "default": "maude",
+          "description": "Path to the Maude executable. Default: 'maude' (uses PATH). Example: '/home/user/Maude/maude-3.1/maude.linux64'"
+        },
+        "maude.workingDirectory": {
+          "type": "string",
+          "default": "",
+          "description": "Working directory for Maude (where 'load' paths are resolved). Leave empty to auto-detect from executable path."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -81,7 +105,8 @@
     "package": "vsce package"
   },
   "devDependencies": {
-    "@types/vscode": "^1.50.0",
+    "@types/node": "^25.7.0",
+    "@types/vscode": "^1.70.0",
     "@vscode/vsce": "^2.22.0",
     "typescript": "^5.3.0"
   }

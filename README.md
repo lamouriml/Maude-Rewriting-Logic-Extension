@@ -54,6 +54,24 @@ Jump directly to the definition of any symbol with Ctrl+Click:
 - Operators, sorts, variables, modules, classes, messages, views
 - File-local indexing via lightweight regex extraction
 
+### Interactive Panel Session (Experimental)
+
+> ⚠️ **Unstable — under development.** This feature is a work-in-progress and may change or break.
+
+A **Visualization Panel** that captures Maude terminal output and displays it with formatted, collapsible, color-coded sections for easier analysis:
+
+- `Ctrl+Shift+P` → `Maude: Open Visualization` opens a side panel with an embedded input field
+- Maude runs as a background child process — no terminal or pseudoterminal needed
+- Commands are typed directly into the panel (Enter to submit, Shift+Enter for newline)
+- Output is rendered with syntax coloring and structured collapse/expand sections:
+  - **Solutions** → collapsible `Solution N` blocks
+  - **Show Path** → accordion steps (State ➔ Rule ➔ State) — `state 0,` detection
+  - **Counterexamples** → Path / Cycle split with `{State, Rule}` pair parsing
+  - **Trace output** → grouped into a single collapsible per command
+- Toolbar: **Start** (restart session), **Clear** (clear buffer), **Stop** (SIGINT)
+- Zoom in/out via buttons or `Ctrl+=` / `Ctrl+-` / `Ctrl+0`
+- **Known issues and limitations are documented in `PANEL_SESSION_GUIDE.md`**
+
 ### Snippets
 Pre-built templates for common constructs:
 - `fmod`, `mod`, `omod` — module declarations
