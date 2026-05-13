@@ -84,7 +84,7 @@ Pre-built templates for common constructs:
 
 ## Requirements
 
-- Visual Studio Code 1.85.0 or higher
+- Visual Studio Code 1.50.0 or higher
 
 ## Installation
 

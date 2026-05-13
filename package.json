@@ -18,7 +18,7 @@
     "url": "https://github.com/lamouriml/Maude-Rewriting-Logic-Extension/issues"
   },
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.50.0"
   },
   "categories": [
     "Programming Languages",
@@ -81,8 +81,7 @@
     "package": "vsce package"
   },
   "devDependencies": {
-    "@types/node": "^25.7.0",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.50.0",
     "@vscode/vsce": "^2.22.0",
     "typescript": "^5.3.0"
   }
